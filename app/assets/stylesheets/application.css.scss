@@ -20,7 +20,7 @@
  */
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-color: #333;
 }
 
@@ -39,6 +39,25 @@ footer {
  .container {
  	background-color: #e1d0a4;
  }
+
+ #header-container {
+ padding: 0;
+ }
+
+#header {	
+	background-color: #99806a; 
+	color: #e1d0a4;
+	height: 100px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	font-size: 1.1em;
+	text-align: center;
+	}
+
+#name {
+	font-family: 'Ubuntu', Ariel, sans-serif;
+	font-size:2.2em;
+}
 
  h1 {
  	font-family: 'Ubuntu', Ariel, sans-serif;
