@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Utility name:</strong>
+  <%= @utility_charge.utility_name %>
+</p>
+
+<p>
+  <strong>Utility charge:</strong>
+  <%= @utility_charge.utility_charge %>
+</p>
+
+<p>
+  <strong>Utility charge date:</strong>
+  <%= @utility_charge.utility_charge_date %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @utility_charge.property %>
+</p>
+
+<%= link_to 'Edit', edit_utility_charge_path(@utility_charge) %> |
+<%= link_to 'Back', utility_charges_path %>

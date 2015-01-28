@@ -1,0 +1,33 @@
+<h1>Listing utility_charges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Utility name</th>
+      <th>Utility charge</th>
+      <th>Utility charge date</th>
+      <th>Property</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @utility_charges.each do |utility_charge| %>
+      <tr>
+        <td><%= utility_charge.utility_name %></td>
+        <td><%= utility_charge.utility_charge %></td>
+        <td><%= utility_charge.utility_charge_date %></td>
+        <td><%= utility_charge.property %></td>
+        <td><%= link_to 'Show', utility_charge %></td>
+        <td><%= link_to 'Edit', edit_utility_charge_path(utility_charge) %></td>
+        <td><%= link_to 'Destroy', utility_charge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Utility charge', new_utility_charge_path %>

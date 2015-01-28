@@ -1,0 +1,33 @@
+<%= form_for(@utility_charge) do |f| %>
+  <% if @utility_charge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@utility_charge.errors.count, "error") %> prohibited this utility_charge from being saved:</h2>
+
+      <ul>
+      <% @utility_charge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :utility_name %><br>
+    <%= f.text_field :utility_name %>
+  </div>
+  <div class="field">
+    <%= f.label :utility_charge %><br>
+    <%= f.text_field :utility_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :utility_charge_date %><br>
+    <%= f.text_field :utility_charge_date %>
+  </div>
+  <div class="field">
+    <%= f.label :property_id %><br>
+    <%= f.text_field :property_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
