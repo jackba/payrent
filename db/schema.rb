@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128034850) do
+ActiveRecord::Schema.define(version: 20150129022434) do
+
+  create_table "payments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "unit_id"
+    t.integer  "utility_charge_id"
+    t.decimal  "total_paid",        precision: 6, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["unit_id"], name: "index_payments_on_unit_id"
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id"
+  add_index "payments", ["utility_charge_id"], name: "index_payments_on_utility_charge_id"
 
   create_table "properties", force: true do |t|
     t.string   "name"

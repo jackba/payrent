@@ -1,4 +1,6 @@
 Payrent::Application.routes.draw do
+  resources :payments
+
   resources :units
 
   resources :utility_charges
