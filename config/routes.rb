@@ -1,4 +1,11 @@
 Payrent::Application.routes.draw do
+  #get "users/index"
+  #get "users/show"
+  #get "users/new"
+  #get "users/edit"
+
+  #resources :users
+
   resources :payments
 
   resources :units
@@ -8,8 +15,10 @@ Payrent::Application.routes.draw do
   resources :properties
 
   devise_for :users
+
   get "welcome/index"
   get "welcome/about"
 
   root to: 'welcome#index'
+
 end
