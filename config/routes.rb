@@ -21,4 +21,8 @@ Payrent::Application.routes.draw do
 
   root to: 'welcome#index'
 
+  #root :to => 'admin#index', :constraints => RoleConstraint.new(:admin) #matches this route when the current user is an admin
+  #root :to => 'sites#index', :constraints => RoleConstraint.new(:user) #matches this route when the current user is an user
+  #root :to => 'welcome#index' #matches this route when the above two matches don't pass
+
 end

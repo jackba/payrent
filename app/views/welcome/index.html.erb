@@ -50,7 +50,14 @@
 <div class="row">
 	<div class="col-md-12 center">
         <p class="stdfont">We are accepting online payment via credit card!</p>
-		<%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %><br />
-        <p class="stdfont">To pay your rent!</p><br />
+        <% if current_user && !current_user.admin %>
+            <%= link_to "Pay Rent", payments_path, class: 'btn btn-success' %><br /><br />
+        <% elsif current_user && current_user.admin %>
+            <%= link_to "Admin Page", properties_path, class: 'btn btn-success' %><br /><br />
+        <% else %>
+		  <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %><br />
+          <p class="stdfont">To pay your rent!</p><br />
+        <% end %>
+        
 	</div>
 </div>
