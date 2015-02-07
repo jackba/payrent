@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :utility_name %><br>
-    <%= f.text_field :utility_name %>
+    <%= f.text_field :utility_name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :utility_charge %><br>
-    <%= f.text_field :utility_charge %>
+    <%= f.text_field :utility_charge, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :utility_charge_date %><br>
-    <%= f.text_field :utility_charge_date %>
+    <%= f.text_field :utility_charge_date, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :property_id %><br>
-    <%= f.text_field :property_id %>
+    <%= f.text_field :property_id, class: 'form-control' %>
   </div>
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>

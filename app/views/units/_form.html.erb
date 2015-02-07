@@ -11,31 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :rent_charge %><br>
-    <%= f.text_field :rent_charge %>
+    <%= f.text_field :rent_charge, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :security_charge %><br>
-    <%= f.text_field :security_charge %>
+    <%= f.text_field :security_charge, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :security_paid %><br>
-    <%= f.check_box :security_paid %>
+  <div class="form-group">
+    <%= f.label :security_paid %>
+    <%= f.check_box :security_paid, class: 'checkbox' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :property_id %><br>
-    <%= f.text_field :property_id %>
+    <%= f.text_field :property_id, class: 'form-control' %>
   </div>
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>

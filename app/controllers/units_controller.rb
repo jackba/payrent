@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:show, :index]
 
   # GET /units
   # GET /units.json

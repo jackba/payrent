@@ -1,4 +1,5 @@
 Payrent::Application.routes.draw do
+  get "/admin" => "admin#index"
   #get "users/index"
   #get "users/show"
   #get "users/new"

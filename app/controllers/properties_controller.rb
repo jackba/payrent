@@ -1,10 +1,12 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:show, :index]
 
   # GET /properties
   # GET /properties.json
   def index
     @properties = Property.all
+    @property  = Property.new
   end
 
   # GET /properties/1

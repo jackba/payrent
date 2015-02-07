@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
     #def after_sign_in_path_for(resource)
     #end
 
+    def require_admin 
+      unless current_user.admin? 
+        flash[:notice] = "You need to be an admin to do that!"
+        redirect_to root_url
+      end
+    end
+
    protected
  
    def configure_permitted_parameters
