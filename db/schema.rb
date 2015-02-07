@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129022434) do
+ActiveRecord::Schema.define(version: 20150207010046) do
 
   create_table "payments", force: true do |t|
     t.integer  "user_id"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150129022434) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "unit_id"
     t.boolean  "admin",                  default: false, null: false
     t.string   "stripe_pub_key"
     t.string   "stripe_secret_key"
@@ -72,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150129022434) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unit_id"], name: "index_users_on_unit_id"
 
   create_table "utility_charges", force: true do |t|
     t.string   "utility_name"
