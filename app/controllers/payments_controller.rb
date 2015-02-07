@@ -5,6 +5,19 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @payments = Payment.all
+
+    #@units = Unit.all
+
+    @user = current_user
+
+    #@property = Property.all
+
+    @user_property = @user.property.name
+    @user_unit = @user.unit.description
+    @user_rent = @user.unit.rent_charge
+    #@user_utility = @user.utility_charge.utility_charge
+    #utiltycharge where payment.userid = utility
+
   end
 
   # GET /payments/1

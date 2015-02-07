@@ -1,33 +1,38 @@
-<h1>Listing payments</h1>
+<h1><%= @user.name %>'s Payment History</h1>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h3>Property: <%= @user_property %>&nbsp;|&nbsp;Unit: <%= @user_unit %></h3> 
+    <h3>Rent Due: <%= number_to_currency(@user_rent) %></h3>
+    <h3>Utilities Due: <%= number_to_currency(@user_rent) %></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Unit</th>
+          <th>Rent Charge</th>
+          <th>Utility Charge</th>
+          <th>Total paid</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Unit</th>
-      <th>Utility charge</th>
-      <th>Total paid</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @payments.each do |payment| %>
-      <tr>
-        <td><%= payment.user %></td>
-        <td><%= payment.unit %></td>
-        <td><%= payment.utility_charge %></td>
-        <td><%= payment.total_paid %></td>
-        <td><%= link_to 'Show', payment %></td>
-        <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <tbody>
+        <% @payments.each do |payment| %>
+          <tr>
+            <td><%= payment.unit %></td>
+            <td><%= payment.utility_charge %></td>
+            <td><%= payment.utility_charge %></td>
+            <td><%= payment.total_paid %></td>
+            <td><%= link_to 'Show', payment %></td>
+            <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+            <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Payment', new_payment_path %>

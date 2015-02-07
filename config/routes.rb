@@ -5,8 +5,6 @@ Payrent::Application.routes.draw do
   #get "users/new"
   #get "users/edit"
 
-  #resources :users
-
   resources :payments
 
   resources :units
@@ -16,6 +14,7 @@ Payrent::Application.routes.draw do
   resources :properties
 
   devise_for :users
+  resources :users, only: [:update]
 
   get "welcome/index"
   get "welcome/about"

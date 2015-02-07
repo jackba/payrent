@@ -1,4 +1,5 @@
 class UtilityCharge < ActiveRecord::Base
   belongs_to :property
-  has_many :payments
+  belongs_to :payments
+  has_many :users, through: :payments
 end
