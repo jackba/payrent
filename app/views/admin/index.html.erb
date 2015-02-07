@@ -43,16 +43,16 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% @property.units.each do |unit| %>
+			<% @units.each do |unit| %>
 				<tr>
-						<td><%= unit.property %></td>
+						<td><%= unit.property.name %></td>
 						<td><%= unit.description %></td>
-						<td><%= unit.rent_charge %></td>
-						<td><%= unit.security_charge %></td>
+						<td><%= number_to_currency(unit.rent_charge) %></td>
+						<td><%= number_to_currency(unit.security_charge) %></td>
 						<td><%= unit.security_paid %></td>
-						<td><%= unit.user %></td>
+						<td><%= unit.user.name %></td>
 					</tr>
-					<% end %>
+				<% end %>
 				</tbody>
 		</table>
 		<div class="col-md-6 col-md-offset-3">
@@ -70,7 +70,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Email</th>
-					<th>Unit</th>
+					<th>Admin</th>
 					<th>ID</th>
 				</tr>
 			</thead>
@@ -79,7 +79,7 @@
 					<tr>
 						<td><%= user.name %></td>
 						<td><%= user.email %></td>
-						<td><%= user.unit %></td>
+						<td><%= user.admin %></td>
 						<td><%= user.id %></td>
 					</tr>
 				<% end %>
@@ -88,11 +88,11 @@
 	</div>
 </div>
 <h2>Manage Utility Payments</h2>
-<h3>Add Utility Payment</h3>
+
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-
-		<!--<table class="table">
+		<h3>Utility Charges History</h3>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>Utility Name</th>
@@ -101,7 +101,18 @@
 					<th>Property</th>
 				</tr>
 			</thead>
-		</table>-->
+			<tbody>
+				<% @utility_charges.each do |utility| %>
+					<tr>
+						<td><%= utility.utility_name %></td>
+						<td><%= number_to_currency(utility.utility_charge) %></td>
+						<td><%= utility.utility_charge_date %></td>
+						<td><%= utility.property.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<h3>Add Utility Payment</h3>
 		<div class="col-md-6 col-md-offset-3">
 			<%= render "utility_charges/form" %>
 		</div>
