@@ -125,3 +125,23 @@ footer {
 	color: #99806a;
 	font-weight: bold;
 }
+
+.justify {
+	text-align: justify;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.formbox {
+	border: 2px solid #cea762;
+	-webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius:15px;
+	padding: 10px;
+}
+.form-control {
+	border: 1px solid #cea762;
+}
+
+.left {
+	float: left;
+	margin-right: 100px;
+}

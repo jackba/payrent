@@ -1,8 +1,8 @@
 <h1>Admin Control Panel</h1>
 <h2>Manage Properties</h2>
-<h3>Current Properties</h3>
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
+		<h3>Current Properties</h3>
 		<table class="table">
 			<thead>
 				<tr>
@@ -20,15 +20,20 @@
 					</tr>
 				<% end %>
 			</tbody>
-		</table><br />
+		</table>
+		<div class="center">
+			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addProperty">Add A Property
+			</button>
+		</div><br />
 		<div class="col-sm-6 col-sm-offset-3">
-			<h3>Add A Property</h3>
-			<%=  render "properties/form" %>
+			<div class="collapse" id="addProperty">
+				<%=  render "properties/form" %>
+			</div>
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-sm-6 col-sm-offset-3">
 	<h2>Manage Units</h2>
 	<h3>Current Units</h3>
 		<table class="table">
@@ -44,42 +49,49 @@
 			</thead>
 			<tbody>
 			<% @units.each do |unit| %>
+			<% unit.security_paid ? security_deposit="Yes" : security_deposit="No" %>
 				<tr>
 						<td><%= unit.property.name %></td>
 						<td><%= unit.description %></td>
 						<td><%= number_to_currency(unit.rent_charge) %></td>
 						<td><%= number_to_currency(unit.security_charge) %></td>
-						<td><%= unit.security_paid %></td>
+						<td><%= security_deposit %></td>
 						<td><%= unit.user.name %></td>
 					</tr>
 				<% end %>
 				</tbody>
 		</table>
-		<div class="col-md-6 col-md-offset-3">
-			<h3>Add A Unit</h3>
-			<%= render "units/form" %>
+		<div class="center">
+			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUnit">Add A Unit
+			</button>
+		</div><br />
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="collapse" id="addUnit">
+				<%= render "units/form" %>
+			</div>
 		</div>
 	</div>
 </div>
-<h2>Manage Tenants</h2>
-<h3>Current Tenants</h3>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
+		<h2>Manage Tenants</h2>
+		<h3>Current Tenants</h3>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Admin</th>
-					<th>ID</th>
+					<th>Tenant ID</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @users.each do |user| %>
+					<% user.admin ? user_role="Yes" : user_role="No" %>
 					<tr>
 						<td><%= user.name %></td>
 						<td><%= user.email %></td>
-						<td><%= user.admin %></td>
+						<td><%= user_role %></td>
 						<td><%= user.id %></td>
 					</tr>
 				<% end %>
@@ -112,9 +124,14 @@
 				<% end %>
 			</tbody>
 		</table>
-		<h3>Add Utility Payment</h3>
+			<div class="center">
+			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUtility">Add A Utility Payment
+			</button>
+		</div><br />
 		<div class="col-md-6 col-md-offset-3">
-			<%= render "utility_charges/form" %>
+			<div class="collapse" id="addUtility">
+				<%= render "utility_charges/form" %>
+			</div>
 		</div>
 	</div>
 </div>

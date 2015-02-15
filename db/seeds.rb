@@ -11,3 +11,6 @@ admin.save!
 
 tenant=User.new(name: 'Joe Tenant', email: 'joe.tenant@email.com', password: 'hellotenant', password_confirmation: 'hellotenant')
 tenant.save!
+
+tenant2=User.new(name: 'Jane Smith', email: 'janesmith@abc.com', password: 'janesmith22', password_confirmation: 'janesmith22')
+tenant2.save!

@@ -28,15 +28,17 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @property }
+        flash[:notice] = "Property was successfully created."
+        redirect_to :back
+        #format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @property }
       else
         format.html { render action: 'new' }
         format.json { render json: @property.errors, status: :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # PATCH/PUT /properties/1

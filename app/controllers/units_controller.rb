@@ -26,16 +26,18 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-
-    respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @unit }
+        flash[:notice] = "Unit was successfully created."
+        redirect_to :back
+        #format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
+        #format.html { redirect_to :back, notice: 'Unit was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @unit }
+        #format.json { render action: 'admin#index', status: :created, location: 'admin#index' }
       else
         format.html { render action: 'new' }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
-    end
+
   end
 
   # PATCH/PUT /units/1
