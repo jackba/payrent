@@ -4,7 +4,8 @@
     <h3 class="left">Property: <%= @unit.property.name %>&nbsp;|&nbsp;Unit: <%= @unit.description %></h3> 
     <h3 class="left">Amount Due: <%= number_to_currency(@unit.rent_charge) %></h3>
     <h3 class="left">Utilities Due: <%= number_to_currency(@utility_charge) %></h3>
-    <h3 class="left">Date Due: <%=Date.today.at_beginning_of_month.next_month.strftime("%B %d, %Y") %></h3>
+
+    <h3 class="left">Date Due: <%=@current_due_date.strftime("%B %d, %Y") %></h3>
     <table class="table">
       <thead>
         <tr>
@@ -12,26 +13,23 @@
           <th>Rent Paid</th>
           <th>Utilities Paid</th>
           <th>Total Paid</th>
-          <th></th>
-          <th></th>
         </tr>
       </thead>
 
       <tbody>
         <% @payments.each do |payment| %>
+          <% if payment.user_id == current_user.id %>
           <tr>
             <td><%= payment.created_at.strftime("%B %d, %Y") %></td>
-            <td><%= @unit.rent_charge %></td>
-            <td></td>
-            <td><%= payment.total_paid %></td>
-            <td><%= link_to 'Show', payment %></td>
-            <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+            <td><%= number_to_currency(@unit.rent_charge) %></td>
+            <td><%= payment.utility_charge_id? ? number_to_currency(@utility_charge) : number_to_currency(0.00) %></td>
+            <td><%= number_to_currency(payment.total_paid) %></td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
+    <%= link_to 'Pay Rent', new_stripe_charge_path, class: 'btn btn-success btn-sm' %>
   </div>
 </div>
 <br>
-
-<%= link_to 'New Payment', new_payment_path %>

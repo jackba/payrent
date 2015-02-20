@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-    #def after_sign_in_path_for(resource)
-    #end
+    def after_sign_in_path_for(resource)
+      resource.admin? ? admin_path : payments_path
+    end
 
     def require_admin 
       unless current_user.admin? 

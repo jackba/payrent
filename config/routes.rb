@@ -13,6 +13,8 @@ Payrent::Application.routes.draw do
 
   resources :properties
 
+  resources :stripe_charges, only: [:new, :create]
+
   devise_for :users
   resources :users, only: [:update]
 
