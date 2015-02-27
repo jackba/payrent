@@ -1,8 +1,12 @@
 <h1><%= current_user.name %>'s Payment History</h1>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <h3 class="left">Property: <%= @unit.property.name %>&nbsp;|&nbsp;Unit: <%= @unit.description %></h3> 
-    <h3 class="left">Amount Due: <%= number_to_currency(@unit.rent_charge) %></h3>
+    <h3 class="left">Property: <%= @unit.property.name %></h3>
+    <h3 class="left">Unit: <%= @unit.description %></h3> 
+    <h3 class="left">Rent Due: <%= number_to_currency(@unit.rent_charge) %></h3>
+    <% if !@unit.security_paid %> 
+      <h3 class="left"> Security Deposit Due: <%= number_to_currency(@unit.security_charge) %><h3>
+    <% end %>
     <h3 class="left">Utilities Due: <%= number_to_currency(@utility_charge) %></h3>
 
     <h3 class="left">Date Due: <%=@current_due_date.strftime("%B %d, %Y") %></h3>
@@ -12,6 +16,7 @@
           <th>Date Paid</th>
           <th>Rent Paid</th>
           <th>Utilities Paid</th>
+          <th>Security Paid</th>
           <th>Total Paid</th>
         </tr>
       </thead>
@@ -23,6 +28,7 @@
             <td><%= payment.created_at.strftime("%B %d, %Y") %></td>
             <td><%= number_to_currency(@unit.rent_charge) %></td>
             <td><%= payment.utility_charge_id? ? number_to_currency(@utility_charge) : number_to_currency(0.00) %></td>
+            <td><%= @unit.security_paid? ? @security = number_to_currency(0) : number_to_currency(@unit.security_charge) %>
             <td><%= number_to_currency(payment.total_paid) %></td>
           </tr>
           <% end %>

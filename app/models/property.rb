@@ -4,7 +4,7 @@ class Property < ActiveRecord::Base
 	has_many :users, through: :units
 
 	def latest_utility_charge
-		utility_charges.any? ? (utility_charges.last.utility_charge / users.count) : 0
+		utility_charges.empty? ? 0 : (utility_charges.last.utility_charge / users.count)
 	end
 	
 end

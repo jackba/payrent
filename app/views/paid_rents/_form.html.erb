@@ -1,0 +1,31 @@
+<div class="formbox">
+  <%= form_for(@paid_rent) do |f| %>
+    <% if @paid_rent.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@paid_rent.errors.count, "error") %> prohibited this paid_rent from being saved:</h2>
+
+        <ul>
+        <% @paid_rent.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :unit_id %><br>
+      <%= f.collection_select :unit_id, @units, :id, :description, {:prompt => "Select a unit"}, {:class => 'form-control'} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :date_due %><br>
+      <%= f.date_select :date_due, order: [:month, :day, :year] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :runs %>
+      <%= f.text_field :runs %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit" %>
+    </div>
+  <% end %>
+</div>

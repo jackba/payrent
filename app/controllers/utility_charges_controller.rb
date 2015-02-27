@@ -26,15 +26,15 @@ class UtilityChargesController < ApplicationController
   def create
     @utility_charge = UtilityCharge.new(utility_charge_params)
 
-    respond_to do |format|
       if @utility_charge.save
-        format.html { redirect_to @utility_charge, notice: 'Utility charge was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @utility_charge }
+        flash[:notice] = "Unit was successfully created."
+        redirect_to :back
+        #format.html { redirect_to @utility_charge, notice: 'Utility charge was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @utility_charge }
       else
         format.html { render action: 'new' }
         format.json { render json: @utility_charge.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # PATCH/PUT /utility_charges/1

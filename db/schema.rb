@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207010046) do
+ActiveRecord::Schema.define(version: 20150225023000) do
+
+  create_table "paid_rents", force: true do |t|
+    t.date     "date_due"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "paid",       default: false, null: false
+  end
+
+  add_index "paid_rents", ["unit_id"], name: "index_paid_rents_on_unit_id"
 
   create_table "payments", force: true do |t|
     t.integer  "user_id"

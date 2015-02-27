@@ -1,9 +1,14 @@
 Payrent::Application.routes.draw do
+  #get "paid_rent/index"
+  #get "paid_rent/new"
+  #get "paid_rent/create"
   get "/admin" => "admin#index"
   #get "users/index"
   #get "users/show"
   #get "users/new"
   #get "users/edit"
+
+  resources :paid_rents
 
   resources :payments
 

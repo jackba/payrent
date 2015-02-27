@@ -135,3 +135,36 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h3>Rent Tracking History</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Unit ID</th>
+					<th>Due Date</th>
+					<th>Paid</th>
+					<th>Date Paid</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @paid_rents.each do |paid| %>
+				<% paid.paid ? rent_paid="Yes" : rent_paid="No" %>
+				<% unit = Unit.where(id: paid.unit_id).first %>
+					<% if unit %>
+						<tr>
+							<td><%= unit.description %></td>
+							<td><%= paid.date_due.strftime("%B %d, %Y") %></td>
+							<td><%= rent_paid %></td>
+							<td><%=  %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="col-md-6 col-md-offset-3">
+			<h3>Create or fill the Rent Paid table</h3>
+				<%= render "paid_rents/form" %>
+		</div>
+	</div>
+</div>
