@@ -9,6 +9,7 @@
 					<th>Name</th>
 					<th>Address</th>
 					<th>ID</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -17,6 +18,7 @@
 						<td><%= property.name %></td>
 						<td><%= property.address %></td>
 						<td><%= property.id %></td>
+						<th><%= link_to 'Edit', edit_property_path(property)%></td>
 					</tr>
 				<% end %>
 			</tbody>
@@ -32,8 +34,9 @@
 		</div>
 	</div>
 </div>
+
 <div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-md-6 col-md-offset-3">
 	<h2>Manage Units</h2>
 	<h3>Current Units</h3>
 		<table class="table">
@@ -45,21 +48,23 @@
 					<th>Security Charge</th>
 					<th>Security Paid</th>
 					<th>Tenant</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody>
 			<% @units.each do |unit| %>
 			<% unit.security_paid ? security_deposit="Yes" : security_deposit="No" %>
 				<tr>
-						<td><%= unit.property.name %></td>
-						<td><%= unit.description %></td>
-						<td><%= number_to_currency(unit.rent_charge) %></td>
-						<td><%= number_to_currency(unit.security_charge) %></td>
-						<td><%= security_deposit %></td>
-						<td><%= unit.user.name %></td>
-					</tr>
-				<% end %>
-				</tbody>
+					<td><%= unit.property.name %></td>
+					<td><%= unit.description %></td>
+					<td><%= number_to_currency(unit.rent_charge) %></td>
+					<td><%= number_to_currency(unit.security_charge) %></td>
+					<td><%= security_deposit %></td>
+					<td><%= unit.user.name %></td>
+					<td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+				</tr>
+			<% end %>
+			</tbody>
 		</table>
 		<div class="center">
 			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUnit">Add A Unit
@@ -99,14 +104,15 @@
 		</table>
 	</div>
 </div>
-<h2>Manage Utility Payments</h2>
 
+<h2>Manage Utility Payments</h2>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h3>Utility Charges History</h3>
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Utility Charge ID</th>
 					<th>Utility Name</th>
 					<th>Utility Charge</th>
 					<th>Utility Date</th>
@@ -116,6 +122,7 @@
 			<tbody>
 				<% @utility_charges.each do |utility| %>
 					<tr>
+						<td><%= utility.id %></td>
 						<td><%= utility.utility_name %></td>
 						<td><%= number_to_currency(utility.utility_charge) %></td>
 						<td><%= utility.utility_charge_date %></td>
@@ -125,8 +132,8 @@
 			</tbody>
 		</table>
 			<div class="center">
-			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUtility">Add A Utility Payment
-			</button>
+				<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUtility">Add A Utility Payment
+				</button>
 		</div><br />
 		<div class="col-md-6 col-md-offset-3">
 			<div class="collapse" id="addUtility">
@@ -135,6 +142,43 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h2>Review/Manage Payments</h2>
+		<h3>Payments Made</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Tenant</th>
+					<th>Unit</th>
+					<th>Total Paid</th>
+					<th>Date Paid</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @payments.each do |payment| %>
+					<tr>
+						<td><%= payment.user.name %></td>
+						<td><%= payment.unit.description %></td>
+						<td><%= number_to_currency(payment.total_paid) %></td>
+						<td><%= payment.created_at.strftime("%B %d, %Y") %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="center">
+				<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addPayment">Add A Tenants non-CC Payment
+				</button>
+		</div><br />
+		<div class="col-md-6 col-md-offset-3">
+			<div class="collapse" id="addPayment">
+				<%= render "payments/form" %>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 		<h3>Rent Tracking History</h3>
@@ -144,7 +188,6 @@
 					<th>Unit ID</th>
 					<th>Due Date</th>
 					<th>Paid</th>
-					<th>Date Paid</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -156,7 +199,6 @@
 							<td><%= unit.description %></td>
 							<td><%= paid.date_due.strftime("%B %d, %Y") %></td>
 							<td><%= rent_paid %></td>
-							<td><%=  %></td>
 						</tr>
 					<% end %>
 				<% end %>

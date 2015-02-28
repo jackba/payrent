@@ -44,15 +44,16 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1
   # PATCH/PUT /properties/1.json
   def update
-    respond_to do |format|
+    #respond_to do |format|
       if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
-        format.json { head :no_content }
+        flash[:notice] = "Property was successfully created."
+        redirect_to admin_path
+        #format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        #format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @property.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /properties/1

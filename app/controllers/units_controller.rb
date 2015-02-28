@@ -20,6 +20,8 @@ class UnitsController < ApplicationController
 
   # GET /units/1/edit
   def edit
+    @users = User.all
+    @properties = Property.all
   end
 
   # POST /units
@@ -29,10 +31,6 @@ class UnitsController < ApplicationController
       if @unit.save
         flash[:notice] = "Unit was successfully created."
         redirect_to :back
-        #format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        #format.html { redirect_to :back, notice: 'Unit was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @unit }
-        #format.json { render action: 'admin#index', status: :created, location: 'admin#index' }
       else
         format.html { render action: 'new' }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
@@ -43,15 +41,15 @@ class UnitsController < ApplicationController
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
   def update
-    respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-        format.json { head :no_content }
+        flash[:notice] = "Unit was successfully created."
+        redirect_to admin_path
+        #format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+        #format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /units/1

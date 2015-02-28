@@ -6,6 +6,7 @@ class AdminController < ApplicationController
   	@units = Unit.all
   	@utility_charges = UtilityCharge.all
     @paid_rents = PaidRent.all
+    @payments = Payment.all
 
   	@property = Property.new
   	@unit = Unit.new
@@ -13,5 +14,6 @@ class AdminController < ApplicationController
   	@user = User.new
   	@payment = Payment.new
     @paid_rent = PaidRent.new
+    @payment = Payment.new
   end
 end

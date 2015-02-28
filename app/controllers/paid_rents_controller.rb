@@ -14,8 +14,7 @@ class PaidRentsController < ApplicationController
       #Rails.logger.info ">>>> rent paid created: #{month_increment}"
       break unless success
     end
-  	# @paid_rent = PaidRent.create(paid_rent_params)
-  	# @paid_rent.paid = false
+
   	 if success
         flash[:notice] = "Rent Due Date succesfully created."
         redirect_to :back
