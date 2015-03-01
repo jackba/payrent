@@ -25,6 +25,10 @@
     <%= f.collection_select :utility_charge_id, @utility_charges, :id, :id, {:prompt => "Select utility charge ID"}, {:class => 'form-control'} %>
   </div>
   <div class="form-group">
+    <%= f.label :pay_type %><br>
+    <%= f.select :pay_type, options_for_select([["Check", "Check"],["Cash","Cash"]]), {:prompt => "Select a Pay Type"}, {:class => 'form-control'} %>
+  </div>
+  <div class="form-group">
     <%= f.label :total_paid %><br>
     <%= f.text_field :total_paid, class: 'form-control' %>
   </div>

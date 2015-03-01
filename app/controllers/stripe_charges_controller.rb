@@ -30,7 +30,7 @@ class StripeChargesController < ApplicationController
      currency: 'usd'
    )
  	#Write payment details to the payments table
-   @payment = Payment.create(total_paid: @total_paid/100, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.property.utility_charges.last.id  )
+   @payment = Payment.create(total_paid: @total_paid/100, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.property.utility_charges.last.id, pay_type: "Credit"  )
    @payment.save
 
    #if security deposit is paid switch boolean to true

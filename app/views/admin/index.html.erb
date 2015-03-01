@@ -1,7 +1,24 @@
-<h1>Admin Control Panel</h1>
-<h2>Manage Properties</h2>
 <div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-sm-3" id="howto">
+		<h4><u>How To Use This Page</u></h4>
+		<ol>
+			<li>Create all properties</li>
+			<li>Invite tenants to register</li>
+			<li>Create units for each property (a tenant is requried)</li>
+				<ul>
+					<li>It is recommended to use the property name in the unit name</li>
+					<li>For example,</li>
+					<li>Property Name = "Lake View"</li>
+					<li>Unit Name = "Lake View - Unit 1"</li>
+				</ul>
+			<li>Create the Rent Tracking Table (update as required)</li>
+			<li>Assign utility payments, if needed</li>
+			<li>Input payments made with cash or check to keep list current</li>
+		</ol>
+	</div>
+	<div class="col-sm-6">
+		<h1>Admin Control Panel</h1>
+		<h2>Manage Properties</h2>
 		<h3>Current Properties</h3>
 		<table class="table">
 			<thead>
@@ -18,7 +35,7 @@
 						<td><%= property.name %></td>
 						<td><%= property.address %></td>
 						<td><%= property.id %></td>
-						<th><%= link_to 'Edit', edit_property_path(property)%></td>
+						<td><b><%= link_to 'Edit', edit_property_path(property)%></b></td>
 					</tr>
 				<% end %>
 			</tbody>
@@ -61,7 +78,7 @@
 					<td><%= number_to_currency(unit.security_charge) %></td>
 					<td><%= security_deposit %></td>
 					<td><%= unit.user.name %></td>
-					<td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+					<td><b><%= link_to 'Edit', edit_unit_path(unit) %></b></td>
 				</tr>
 			<% end %>
 			</tbody>
@@ -153,6 +170,7 @@
 					<th>Tenant</th>
 					<th>Unit</th>
 					<th>Total Paid</th>
+					<th>Pay Type</th>
 					<th>Date Paid</th>
 				</tr>
 			</thead>
@@ -162,6 +180,7 @@
 						<td><%= payment.user.name %></td>
 						<td><%= payment.unit.description %></td>
 						<td><%= number_to_currency(payment.total_paid) %></td>
+						<td><%= payment.pay_type %></td>
 						<td><%= payment.created_at.strftime("%B %d, %Y") %></td>
 					</tr>
 				<% end %>

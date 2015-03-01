@@ -35,15 +35,15 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
 
-    respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @payment }
+        flash[:notice] = "Unit was successfully created."
+        redirect_to admin_path
+        #format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @payment }
       else
         format.html { render action: 'new' }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # PATCH/PUT /payments/1
@@ -78,6 +78,6 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:user_id, :unit_id, :utility_charge_id, :total_paid)
+      params.require(:payment).permit(:user_id, :unit_id, :utility_charge_id, :total_paid, :pay_type)
     end
 end

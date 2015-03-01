@@ -24,6 +24,10 @@ body {
     background-color: #333;
 }
 
+table {
+	font-family: 'Ubuntu', Ariel, sans-serif;
+}
+
 .hero-spacer {
     margin-top: 50px;
 }
@@ -136,12 +140,58 @@ footer {
 	border: 2px solid #cea762;
 	-webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius:15px;
 	padding: 10px;
+	text-align: center;
 }
 .form-control {
 	border: 1px solid #cea762;
 }
 
-.left {
-	float: left;
-	margin-right: 100px;
+.alert-success {
+	background-color: #cea762;
+	border-color: #cea762;
+	color: #99806a;
+	font-weight: bold;
+}
+
+.btn-success {
+	background-color: #cea762;
+	border-color: #cea762;
+	color: #99806a;
+	font-weight: bold;
+}
+
+.btn-success:hover {
+	background-color: #99806a;
+	border-color: #99806a;
+	color: #cea762;
+	font-weight: bold;
+}
+
+#howto {
+	background-color: #E4DCAC;
+	-webkit-border-radius: 0 15px 15px 0; -moz-border-radius: 0 15px 15px 0; border-radius: 0 15px 15px 0;
+	color: DB6D50;
+}
+
+.tenant-format {
+	/*background-color: #fcfaa9;*/
+	font-size: 1.0em;
+}
+
+.td_head_tenant {
+	width: 50%;
+	padding: 5px;
+}
+
+.td_head_tenant_right_float {
+	width: 50%;
+	padding: 5px;
+	text-align: right;
+}
+
+.highlight {
+	font-size: 1.1em;
+	background-color: #9AC5D4;
+	color:  #fcfaa9;
+	font-wight: bold;
 }
