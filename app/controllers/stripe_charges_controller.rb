@@ -30,12 +30,12 @@ class StripeChargesController < ApplicationController
      currency: 'usd'
    )
  	#Write payment details to the payments table
-   @payment = Payment.create(total_paid: @total_paid/100, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.property.utility_charges.last.id, pay_type: "Credit"  )
+   @payment = Payment.create(total_paid: @total_paid/100, rent_paid: @unit.rent_charge, security_paid: security, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.property.utility_charges.last.id, pay_type: "Credit"  )
    @payment.save
 
    #if security deposit is paid switch boolean to true
    if security > 0
-    @security_update = Unit.where(unit_id: @unit).first
+    @security_update = Unit.where(user_id: current_user).first
     paid_security = @security_update.update(security_paid: true)
    end
 
@@ -45,7 +45,7 @@ class StripeChargesController < ApplicationController
    @switch_paid = @paid_state.update(paid: true)
 
    flash[:success] = "Thank you for your payment, #{current_user.email}!"
-   redirect_to payments_path # or wherever
+   redirect_to payments_path
  
  # Stripe will send back CardErrors, with friendly messages
  # when something goes wrong.

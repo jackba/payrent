@@ -2,16 +2,16 @@ class PaidRentsController < ApplicationController
 	before_action :require_admin
 
   def index
+    @paid_rents = PaidRent.all
+    @month_sort = @paid_rents.group_by { |t| t.date_due.beginning_of_month }
   end
 
   def create
     runs = params[:paid_rent][:runs].blank? ? 0 : params[:paid_rent][:runs].to_i 
-    #Rails.logger.info ">>>  #{runs.inspect}"
     success = false
     date = Date.new(params[:paid_rent]["date_due(1i)"].to_i, params[:paid_rent]["date_due(2i)"].to_i, params[:paid_rent]["date_due(3i)"].to_i)
     (0 .. runs).each do |month_increment|
       success = PaidRent.create(unit_id: params[:paid_rent][:unit_id], date_due: date + month_increment.months )
-      #Rails.logger.info ">>>> rent paid created: #{month_increment}"
       break unless success
     end
 

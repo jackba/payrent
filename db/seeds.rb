@@ -9,8 +9,26 @@ admin=User.new(name: 'David French', email: 'brookviewonellc@gmail.com', passwor
 admin.toggle!(:admin)
 admin.save!
 
-tenant=User.new(name: 'Joe Tenant', email: 'joe.tenant@email.com', password: 'hellotenant', password_confirmation: 'hellotenant')
+tenant=User.new(name: 'Jason French', email: 'jason.french@fake.email.com', password: 'hellotenant', password_confirmation: 'hellotenant')
 tenant.save!
 
-tenant2=User.new(name: 'Jane Smith', email: 'janesmith@abc.com', password: 'janesmith22', password_confirmation: 'janesmith22')
+tenant2=User.new(name: 'Shawn Smith', email: 'shawnsmith@abc.com', password: 'shawnsmith22', password_confirmation: 'shawnsmith22')
 tenant2.save!
+
+tenant3=User.new(name: 'Gail Dedominces', email: 'gaild@abc.com', password: 'galed123', password_confirmation: 'galed123')
+tenant3.save!
+
+tenant4=User.new(name: 'Kristi Drischler', email: 'kristi1891@abc.com', password: 'kristi1891', password_confirmation: 'kristi1891')
+tenant4.save!
+
+tenant5=User.new(name: 'Felix Keppler', email: 'felixkeppler@aabc.com', password: 'felixk6013', password_confirmation: 'felixk6013')
+tenant5.save!
+
+tenant6=User.new(name: 'Ryan Clarke', email: 'ryan.clarke@aabc.com', password: 'ryanclarke444', password_confirmation: 'ryanclarke444')
+tenant6.save!
+
+tenant7=User.new(name: 'Simon Madsen', email: 'spmad555@aabc.com', password: 'spmad555', password_confirmation: 'spmad555')
+tenant7.save!
+
+tenant8=User.new(name: 'Chris Marsella', email: 'chrismarsella@aabc.com', password: 'chris1305', password_confirmation: 'chris1305')
+tenant8.save!

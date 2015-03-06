@@ -21,7 +21,7 @@ Payrent::Application.routes.draw do
   resources :stripe_charges, only: [:new, :create]
 
   devise_for :users
-  resources :users, only: [:update]
+  resources :users, only: [:update, :index]
 
   get "welcome/index"
   get "welcome/about"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228130122) do
+ActiveRecord::Schema.define(version: 20150302022608) do
 
   create_table "paid_rents", force: true do |t|
     t.date     "date_due"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150228130122) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "pay_type"
+    t.decimal  "rent_paid",         precision: 6, scale: 2
+    t.decimal  "security_paid",     precision: 6, scale: 2
   end
 
   add_index "payments", ["unit_id"], name: "index_payments_on_unit_id"

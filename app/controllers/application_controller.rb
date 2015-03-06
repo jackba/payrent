@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
       resource.admin? ? admin_path : payments_path
     end
 
+    def after_sign_up_path_for(resource)
+      users_path
+    end
+
     def require_admin 
       unless current_user.admin? 
         flash[:notice] = "You need to be an admin to do that!"

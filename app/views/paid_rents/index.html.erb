@@ -1,2 +1,30 @@
-<h1>PaidRent#index</h1>
-<p>Find me in app/views/paid_rent/index.html.erb</p>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h3>Rent Tracking History</h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Unit ID</th>
+					<th>Due Date</th>
+					<th>Paid</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @month_sort.each do |month, paid_rents| %>
+					<% paid_rents.each do |paid| %>
+						<% paid.paid ? rent_paid="Yes" : rent_paid="No" %>
+							<% unit = Unit.where(id: paid.unit_id).first %>
+							<% if unit %>
+								<tr>
+									<td><%= unit.description %></td>
+									<td><%= paid.date_due.strftime("%B %d, %Y") %></td>
+									<td><%= rent_paid %></td>
+								</tr>
+							<% end %>
+					<% end %>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to 'Back', admin_path %>
+	</div>
+</div>

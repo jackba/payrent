@@ -8,11 +8,12 @@ class PaymentsController < ApplicationController
    
     @unit = current_user.unit
     
-    @utility_charge = current_user.property.latest_utility_charge
+    @utility_charge = current_user.property.present? ? current_user.property.latest_utility_charge : 0
 
     #Find the next month due from the paid_rents Table
     @paid_rent = PaidRent.all
-    @current_due_date = PaidRent.where(paid: false, unit_id: @unit).first.date_due
+    last_unpaid_rent_for_unit = PaidRent.where(paid: false, unit_id: @unit).first
+    @current_due_date = last_unpaid_rent_for_unit.present? ? last_unpaid_rent_for_unit.due_date : nil
   end
 
   # GET /payments/1

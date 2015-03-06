@@ -1,58 +1,69 @@
-<h1><%= current_user.name %>'s Payment History</h1>
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="tenant-format">
-      <table width=100%>
-        <tr>
-          <td class="td_head_tenant">Property: <%= @unit.property.name %></td>
-          <td class="td_head_tenant_right_float">Unit: <%= @unit.description %></td> 
-        </tr>
-        <tr>
-          <td class="td_head_tenant">Rent Due: <%= number_to_currency(@unit.rent_charge) %></td>
-          <td class="td_head_tenant_right_float">Utilities Due: <%= number_to_currency(@utility_charge) %></td>
-        </tr>
-        <tr>
-          <% if !@unit.security_paid %> 
-            <td class="td_head_tenant">Security Deposit Due: <%= number_to_currency(@unit.security_charge) %></td>
-          <% else %>
-            <td class="td_head_tenant">Security Deposit Due: Paid</td>
+<% if current_user.unit %>
+  <h1><%= current_user.name %>'s Payment History</h1>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="tenant-format">
+        <table width=100%>
+          <tr>
+            <td class="td_head_tenant">Property: <%= @unit.property.name %></td>
+            <td class="td_head_tenant_right_float">Unit: <%= @unit.description %></td> 
+          </tr>
+          <tr>
+            <td class="td_head_tenant">Rent Due: <%= number_to_currency(@unit.rent_charge) %></td>
+            <td class="td_head_tenant_right_float">Utilities Due: <%= number_to_currency(@utility_charge) %></td>
+          </tr>
+          <tr>
+            <% unless @unit.security_paid %> 
+              <td class="td_head_tenant">Security Deposit Due: <%= number_to_currency(@unit.security_charge) %></td>
+            <% else %>
+              <td class="td_head_tenant">Security Deposit Due: Paid</td>
+            <% end %>
+          </tr>
+          <% if  @current_due_date.present? %>
+            <tr>
+              <td class="td_head_tenant highlight">Date Due: <%= @current_due_date.strftime("%B %d, %Y") %></td>
+              <td class="td_head_tenant_right_float highlight"><%= link_to 'Pay Rent', new_stripe_charge_path, class: 'btn btn-success btn-sm' %></td>
+            </tr>
           <% end %>
-        </tr>
-        <tr>
-          <td class="td_head_tenant highlight">Date Due: <%=@current_due_date.strftime("%B %d, %Y") %></td>
-          <td class="td_head_tenant_right_float highlight"><%= link_to 'Pay Rent', new_stripe_charge_path, class: 'btn btn-success btn-sm' %></td>
-        </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date Paid</th>
+            <th>Rent Paid</th>
+            <th>Utilities Paid</th>
+            <th>Security Paid</th>
+            <th>Pay Type</th>
+            <th>Total Paid</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @payments.each do |payment| %>
+            <% if payment.user_id == current_user.id %>
+            <tr>
+              <td><%= payment.created_at.strftime("%B %d, %Y") %></td>
+              <td><%= number_to_currency(payment.rent_paid) %></td>
+              <td><%= payment.utility_charge_id? ? number_to_currency(@utility_charge) : number_to_currency(0.00) %></td>
+              <td><%= number_to_currency(payment.security_paid) %></td>
+              <td><%= payment.pay_type %></td>
+              <td><%= number_to_currency(payment.total_paid) %></td>
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
-  <div class="col-sm-8 col-sm-offset-2">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Date Paid</th>
-          <th>Rent Paid</th>
-          <th>Utilities Paid</th>
-          <th>Security Paid</th>
-          <th>Pay Type</th>
-          <th>Total Paid</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @payments.each do |payment| %>
-          <% if payment.user_id == current_user.id %>
-          <tr>
-            <td><%= payment.created_at.strftime("%B %d, %Y") %></td>
-            <td><%= number_to_currency(@unit.rent_charge) %></td>
-            <td><%= payment.utility_charge_id? ? number_to_currency(@utility_charge) : number_to_currency(0.00) %></td>
-            <td><%= @unit.security_paid? ? @security = number_to_currency(0) : number_to_currency(@unit.security_charge) %></td>
-            <td><%= payment.pay_type %></td>
-            <td><%= number_to_currency(payment.total_paid) %></td>
-          </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
+  <br>
+<% else %>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h3>Thank you for registering with Highbrook Properties!</h3>
+      <p class='stdfont'>We have received your information and your account will be available online soon.</p>
+    </div>
   </div>
-</div>
-<br>
+<% end %>
