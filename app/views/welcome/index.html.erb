@@ -49,7 +49,7 @@
 <!-- /.row -->
 <div class="row">
 	<div class="col-md-12 center">
-        <p class="stdfont">We are accepting online payment via credit card!</p>
+        <p class="stdfont">We are accepting online payment via credit or debit card!</p>
         <% if current_user && !current_user.admin %>
             <%= link_to "Pay Rent", payments_path, class: 'btn btn-success' %><br /><br />
         <% elsif current_user && current_user.admin %>

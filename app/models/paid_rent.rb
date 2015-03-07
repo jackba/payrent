@@ -3,4 +3,6 @@ class PaidRent < ActiveRecord::Base
 
   attr_accessor :runs
   
+  validates :unit_id, presence: true
+  
 end

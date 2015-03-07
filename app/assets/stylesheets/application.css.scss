@@ -173,8 +173,8 @@ footer {
 
 #howto {
 	background-color: #E4DCAC;
-	-webkit-border-radius: 0 15px 15px 0; -moz-border-radius: 0 15px 15px 0; border-radius: 0 15px 15px 0;
-	color: DB6D50;
+	-webkit-border-radius: 15px 15px 15px 15px; -moz-border-radius: 15px 15px 15px 15px; border-radius: 14px 15px 15px 15px;
+	color: #99806a;
 }
 
 .tenant-format {
@@ -198,4 +198,8 @@ footer {
 	background-color: #9AC5D4;
 	color:  #fcfaa9;
 	font-wight: bold;
+}
+
+.left_float {
+  float: left;
 }

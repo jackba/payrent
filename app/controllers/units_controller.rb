@@ -30,10 +30,10 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
       if @unit.save
         flash[:notice] = "Unit was successfully created."
-        redirect_to :back
+        redirect_to admin_path
       else
-        format.html { render action: 'new' }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+        flash[:error] = "There was a problem saving the unit. Please ensure all fields are properly filled-in."
+        redirect_to admin_path
       end
 
   end

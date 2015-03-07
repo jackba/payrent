@@ -35,8 +35,8 @@ class PropertiesController < ApplicationController
         #format.html { redirect_to @property, notice: 'Property was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @property }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
+        flash[:error] = "There was a problem saving the property. Please ensure all fields are properly filled-in."
+        redirect_to admin_path
       end
     #end
   end

@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150302022608) do
 
   create_table "utility_charges", force: true do |t|
     t.string   "utility_name"
-    t.decimal  "utility_charge"
+    t.decimal  "utility_charge",      precision: 6, scale: 2
     t.string   "utility_charge_date"
     t.integer  "property_id"
     t.datetime "created_at"

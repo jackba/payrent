@@ -13,7 +13,7 @@ class PaymentsController < ApplicationController
     #Find the next month due from the paid_rents Table
     @paid_rent = PaidRent.all
     last_unpaid_rent_for_unit = PaidRent.where(paid: false, unit_id: @unit).first
-    @current_due_date = last_unpaid_rent_for_unit.present? ? last_unpaid_rent_for_unit.due_date : nil
+    @current_due_date = last_unpaid_rent_for_unit.present? ? last_unpaid_rent_for_unit.date_due : nil
   end
 
   # GET /payments/1
@@ -37,13 +37,15 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
       if @payment.save
-        flash[:notice] = "Unit was successfully created."
+        flash[:notice] = "Payment was successfully created."
         redirect_to admin_path
         #format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @payment }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+        flash[:error] = "There was a problem saving the payment.  Please ensure that all fields are filled in properly."
+        redirect_to admin_path
+        #format.html { render action: 'new' }
+        #format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
   end
 
