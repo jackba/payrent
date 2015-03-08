@@ -134,7 +134,9 @@
 					<th>Utility Charge</th>
 					<th>Utility Date</th>
 					<th>Property</th>
-          <th>No. Tenants</yh>
+          <th>No. Tenants</th>
+          <th></th>
+          <th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -146,6 +148,8 @@
 						<td><%= utility.utility_charge_date %></td>
 						<td><%= utility.property.name %></td>
             <td><%= utility.tenant_count %></td>
+            <td><b><%= link_to 'Edit', edit_utility_charge_path(utility) %></b></td>
+            <td><b><%= link_to 'Destroy', utility, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
 					</tr>
 				<% end %>
 			</tbody>

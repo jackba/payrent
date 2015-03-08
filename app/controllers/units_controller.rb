@@ -42,7 +42,7 @@ class UnitsController < ApplicationController
   # PATCH/PUT /units/1.json
   def update
       if @unit.update(unit_params)
-        flash[:notice] = "Unit was successfully created."
+        flash[:notice] = "Unit was successfully updated."
         redirect_to admin_path
         #format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
         #format.json { head :no_content }

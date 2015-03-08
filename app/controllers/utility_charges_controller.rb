@@ -5,6 +5,7 @@ class UtilityChargesController < ApplicationController
   # GET /utility_charges.json
   def index
     @utility_charges = UtilityCharge.all
+    @properties = Property.all
   end
 
   # GET /utility_charges/1
@@ -19,6 +20,8 @@ class UtilityChargesController < ApplicationController
 
   # GET /utility_charges/1/edit
   def edit
+    @utility_charges = UtilityCharge.all
+    @properties = Property.all
   end
 
   # POST /utility_charges
@@ -58,7 +61,7 @@ class UtilityChargesController < ApplicationController
   def destroy
     @utility_charge.destroy
     respond_to do |format|
-      format.html { redirect_to utility_charges_url }
+      format.html { redirect_to admin_path }
       format.json { head :no_content }
     end
   end
