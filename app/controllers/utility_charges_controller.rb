@@ -71,6 +71,6 @@ class UtilityChargesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def utility_charge_params
-      params.require(:utility_charge).permit(:utility_name, :utility_charge, :utility_charge_date, :property_id)
+      params.require(:utility_charge).permit(:utility_name, :utility_charge, :utility_charge_date, :property_id, :tenant_count)
     end
 end

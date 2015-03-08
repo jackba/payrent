@@ -134,6 +134,7 @@
 					<th>Utility Charge</th>
 					<th>Utility Date</th>
 					<th>Property</th>
+          <th>No. Tenants</yh>
 				</tr>
 			</thead>
 			<tbody>
@@ -144,6 +145,7 @@
 						<td><%= number_to_currency(utility.utility_charge) %></td>
 						<td><%= utility.utility_charge_date %></td>
 						<td><%= utility.property.name %></td>
+            <td><%= utility.tenant_count %></td>
 					</tr>
 				<% end %>
 			</tbody>
