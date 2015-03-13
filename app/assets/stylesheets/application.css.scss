@@ -171,6 +171,11 @@ footer {
 	font-weight: bold;
 }
 
+.btn-success:active, .btn-success:focus, .btn-success.focus{
+  border-color: #99806a;
+}
+
+
 #howto {
 	background-color: #E4DCAC;
 	-webkit-border-radius: 15px 15px 15px 15px; -moz-border-radius: 15px 15px 15px 15px; border-radius: 14px 15px 15px 15px;

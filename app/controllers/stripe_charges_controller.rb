@@ -3,7 +3,7 @@ class StripeChargesController < ApplicationController
 	 def new
 	 	@unit = current_user.unit
     @unit.security_paid? ? security = 0 : security = @unit.security_charge
-    @total_paid = ((@unit.rent_charge + current_user.property.latest_utility_charge + security)*100).round
+    @total_paid = ((@unit.rent_charge + current_user.unit.latest_utility_charge + security)*100).round
 	   @stripe_btn_data = {
 	     key: "#{ Rails.configuration.stripe[:publishable_key] }",
 	     description: "Rent Payment - #{current_user.name}",
@@ -14,7 +14,7 @@ class StripeChargesController < ApplicationController
 	def create
  		@unit = current_user.unit
     @unit.security_paid? ? security = 0 : security = @unit.security_charge
-    @total_paid = ((@unit.rent_charge+current_user.property.latest_utility_charge + security)*100).round
+    @total_paid = ((@unit.rent_charge+current_user.unit.latest_utility_charge + security)*100).round
    # Creates a Stripe Customer object, for associating
    # with the charge
    customer = Stripe::Customer.create(
@@ -30,7 +30,7 @@ class StripeChargesController < ApplicationController
      currency: 'usd'
    )
  	#Write payment details to the payments table
-   @payment = Payment.create(total_paid: @total_paid/100, rent_paid: @unit.rent_charge, security_paid: security, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.property.utility_charges.last.id, pay_type: "Credit"  )
+   @payment = Payment.create(total_paid: @total_paid/100, rent_paid: @unit.rent_charge, security_paid: security, user_id: current_user.id, unit_id: current_user.unit.id, utility_charge_id: current_user.unit.utility_charges.last.id, pay_type: "Credit"  )
    @payment.save
 
    #if security deposit is paid switch boolean to true
@@ -44,6 +44,12 @@ class StripeChargesController < ApplicationController
    @paid_state = PaidRent.where(date_due: @current_due_date, unit_id: current_user.unit.id).first
    @switch_paid = @paid_state.update(paid: true)
 
+    #is_paid boolean for UtilityCharge table is 'false' by default - change to 'true'
+    if current_user.unit.latest_utility_charge > 0
+      @utility_not_paid = UtilityCharge.where(is_paid: false, unit_id: current_user.unit.id).last
+      @utility_is_paid = @utility_not_paid.update(is_paid: true)
+    end
+    
    flash[:success] = "Thank you for your payment, #{current_user.email}!"
    redirect_to payments_path
  

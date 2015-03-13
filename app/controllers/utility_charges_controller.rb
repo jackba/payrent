@@ -5,7 +5,7 @@ class UtilityChargesController < ApplicationController
   # GET /utility_charges.json
   def index
     @utility_charges = UtilityCharge.all
-    @properties = Property.all
+    @units = Unit.all
   end
 
   # GET /utility_charges/1
@@ -21,7 +21,7 @@ class UtilityChargesController < ApplicationController
   # GET /utility_charges/1/edit
   def edit
     @utility_charges = UtilityCharge.all
-    @properties = Property.all
+    @units = Unit.all
   end
 
   # POST /utility_charges
@@ -74,6 +74,6 @@ class UtilityChargesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def utility_charge_params
-      params.require(:utility_charge).permit(:utility_name, :utility_charge, :utility_charge_date, :property_id, :tenant_count)
+      params.require(:utility_charge).permit(:utility_name, :utility_charge, :utility_charge_date, :unit_id, :tenant_count)
     end
 end

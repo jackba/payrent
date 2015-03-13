@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308023126) do
+ActiveRecord::Schema.define(version: 20150312232746) do
 
   create_table "paid_rents", force: true do |t|
     t.date     "date_due"
@@ -89,12 +89,12 @@ ActiveRecord::Schema.define(version: 20150308023126) do
     t.string   "utility_name"
     t.decimal  "utility_charge",      precision: 6, scale: 2
     t.string   "utility_charge_date"
-    t.integer  "property_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tenant_count"
+    t.integer  "unit_id"
+    t.boolean  "is_paid",                                     default: false, null: false
   end
 
-  add_index "utility_charges", ["property_id"], name: "index_utility_charges_on_property_id"
+  add_index "utility_charges", ["unit_id"], name: "index_utility_charges_on_unit_id"
 
 end

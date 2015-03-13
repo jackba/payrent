@@ -133,8 +133,7 @@
 					<th>Utility Name</th>
 					<th>Utility Charge</th>
 					<th>Utility Date</th>
-					<th>Property</th>
-          <th>No. Tenants</th>
+					<th>Unit</th>
           <th></th>
           <th></th>
 				</tr>
@@ -146,8 +145,7 @@
 						<td><%= utility.utility_name %></td>
 						<td><%= number_to_currency(utility.utility_charge) %></td>
 						<td><%= utility.utility_charge_date %></td>
-						<td><%= utility.property.name %></td>
-            <td><%= utility.tenant_count %></td>
+            <td><%= utility.unit.description %></td>
             <td><b><%= link_to 'Edit', edit_utility_charge_path(utility) %></b></td>
             <td><b><%= link_to 'Destroy', utility, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
 					</tr>
