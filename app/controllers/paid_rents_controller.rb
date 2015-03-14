@@ -2,8 +2,8 @@ class PaidRentsController < ApplicationController
 	before_action :require_admin
 
   def index
-    #@paid_rents = PaidRent.all
-    @paid_rents = PaidRent.paginate(page: params[:page], per_page: 15)
+    @paid_rents = PaidRent.all
+    #@paid_rents = PaidRent.paginate(page: params[:page], per_page: 15) #paginate gem conflicts with group_by nethod
     @month_sort = @paid_rents.group_by { |t| t.date_due.beginning_of_month }
   end
 
@@ -27,7 +27,7 @@ class PaidRentsController < ApplicationController
 
 	private
 		def paid_rent_params
-			params.require(:paid_rent).permit(:unit_id, :date_due)
+      params.require(:paid_rent).permit(:unit_id, :date_due)
 		end
 
 

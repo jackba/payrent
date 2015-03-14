@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   	@users = User.all
   	@units = Unit.all
   	@utility_charges = UtilityCharge.all
-    @paid_rents = PaidRent.all.limit(10)
+    @paid_rents = PaidRent.all.limit(15)
     @payments = Payment.all
 
   	@property = Property.new

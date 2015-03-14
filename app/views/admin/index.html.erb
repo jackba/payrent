@@ -147,7 +147,7 @@
 						<td><%= utility.utility_charge_date %></td>
             <td><%= utility.unit.description %></td>
             <td><b><%= link_to 'Edit', edit_utility_charge_path(utility) %></b></td>
-            <td><b><%= link_to 'Destroy', utility, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
+            <td><b><%= link_to 'Delete', utility, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
 					</tr>
 				<% end %>
 			</tbody>

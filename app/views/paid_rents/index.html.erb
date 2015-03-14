@@ -10,8 +10,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @month_sort.each do |month, paid_rents| %>
-					<% paid_rents.each do |paid| %>
+        <% @month_sort.keys.sort.each do |month| %>
+          <% for paid in @month_sort[month] %>
 						<% paid.paid ? rent_paid="Yes" : rent_paid="No" %>
 							<% unit = Unit.where(id: paid.unit_id).first %>
 							<% if unit %>
@@ -25,7 +25,7 @@
 				<% end %>
 			</tbody>
 		</table>
-    <%= will_paginate @paid_rents %><br>
+    
 		<%= link_to 'Back', admin_path %>
 	</div>
 </div>
