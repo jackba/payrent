@@ -5,37 +5,55 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+		var currentYear = new Date();
+		function showYear(dateObj) {
+		y1 = dateObj.getFullYear();
+		return y1;}
+	</script>
   <title>Payrent</title>
 </head>
 <body>
-	<div class="container">
-		<div id="header">
-
-			<ul class="marginnav" id="nav">
+  <!--Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Highbrook</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav">
 	        <li><%= link_to "Home", root_path %></li>
 	        <% if current_user && current_user.admin %>
 	        	<li><%= link_to "Admin Page", admin_path %></li>
 	        <% elsif current_user && !current_user.admin %>
 	        	<li><%= link_to "Pay Rent", payments_path %></li>
 	        <% end %>
-
-	         <div class="pull-right user-info">
-	           <% if current_user %>
-	             Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-	           <% else %>
-	             <%= link_to "Sign In", new_user_session_path %> or
-	             <%= link_to "Register", new_user_registration_path %>
-	           <% end %>
-	         </div>
-
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+          <li> <%= link_to (current_user.name || current_user.email), edit_user_registration_path %></li> 
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <% end %>
 	      </ul>
-	    <div class="row">
-	    	<div class="col-lg-12">
-					<h1 id="name">Welcome to Highbrook Properties</h1>
-				</div>
-			</div>
-		</div>
-		<div class="content">
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+
+      <div class="jumbotron">
+          <h1>Welcome to Highbrook Properties</h1>
+      </div>
+
+		<!--<div class="content">-->
 
 					<% if flash[:notice] %>
 			         <div class="alert alert-success">
@@ -55,7 +73,12 @@
 			       <% end %>
 	       
 			<%= yield %>
-		</div>
-</div>
+	</div>
+   <footer class="footer">
+      <div class="container">
+        <p class="footer-text center">Copyright &copy; 2013 - <script>document.write(showYear(currentYear));</script><br />
+          <a href="mailto:brookviewonellc@gmail.com">Email Highbrook</a></p>
+      </div>
+   </footer>
 </body>
 </html>

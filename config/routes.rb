@@ -1,12 +1,6 @@
 Payrent::Application.routes.draw do
-  #get "paid_rent/index"
-  #get "paid_rent/new"
-  #get "paid_rent/create"
+
   get "/admin" => "admin#index"
-  #get "users/index"
-  #get "users/show"
-  #get "users/new"
-  #get "users/edit"
 
   resources :paid_rents
 
@@ -25,11 +19,11 @@ Payrent::Application.routes.draw do
 
   get "welcome/index"
   get "welcome/about"
+  get "welcome/brookview"
+  get "welcome/highland"
+  get "welcome/thirteenth"
+  get "welcome/hutton"
 
   root to: 'welcome#index'
-
-  #root :to => 'admin#index', :constraints => RoleConstraint.new(:admin) #matches this route when the current user is an admin
-  #root :to => 'sites#index', :constraints => RoleConstraint.new(:user) #matches this route when the current user is an user
-  #root :to => 'welcome#index' #matches this route when the above two matches don't pass
 
 end
