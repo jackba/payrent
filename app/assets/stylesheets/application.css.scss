@@ -55,7 +55,7 @@ body {
 }
 
 .jumbotron {
-  background-image: url(troy_postcards_birds_eye_view_jumbotron_crop.jpg);
+  background: image-url("troy_postcards_birds_eye_view_jumbotron_crop.jpg");
 }
 
 table {
@@ -108,6 +108,18 @@ table {
 /*this is mnot working*/
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   border-bottom: 1px solid #cea762;
+}
+
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: #e7d9c9;
+}
+
+.dropdown-menu li {
+  background-color: #e4dcac;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #99806a;
 }
 
 /*
