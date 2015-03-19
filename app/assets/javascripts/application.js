@@ -15,6 +15,7 @@
 
 //= require bootstrap
 //= require jquery.jcarousel
-
 //= require jcarousel.connected-carousels
+//= require underscore
+//= require gmaps/google
 //= require_self

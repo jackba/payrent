@@ -45,5 +45,21 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <h3>Map</h3>
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+    
+    <script type="text/javascript">
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        var markers = handler.addMarkers([
+          { lat:42.736826, lng: -73.677014}
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(16);
+      });
+    </script>
+    <br>
   </div>
 </div>
