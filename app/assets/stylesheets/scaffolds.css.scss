@@ -34,7 +34,7 @@ div {
     margin-bottom: 10px;
   }
 }
-
+*/
 #notice {
   color: green;
 }
@@ -46,7 +46,7 @@ div {
 }
 
 #error_explanation {
-  width: 450px;
+  width: 100%;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
@@ -61,10 +61,12 @@ div {
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff;
+    font-family: 'Ubuntu', Ariel, sans-serif;
   }
   ul li {
     font-size: 12px;
-    list-style: square;
+    list-style: disc;
+    font-family: 'Ubuntu', Ariel, sans-serif;
+ 	  color: #99806a;
   }
 }
-*/

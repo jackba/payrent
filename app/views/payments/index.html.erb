@@ -1,34 +1,52 @@
 <% if current_user.unit %>
-  <h1><%= current_user.name %>'s Payment History</h1>
+  <h1 class="center">Welcome <%= current_user.name %></h1>
+  <h2 class="center">Your next month's charges</h2>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="tenant-format">
         <table width=100%>
           <tr>
-            <td class="td_head_tenant">Property: <%= @unit.property.address %></td>
-            <td class="td_head_tenant_right_float">Unit: <%= @unit.description %></td> 
+            <td class="invoice-top">Property: <%= @unit.property.address %></td>
+            <td class="invoice-top-right">Unit: <%= @unit.description %></td> 
           </tr>
+            <% if  @current_due_date.present? %>
           <tr>
-            <td class="td_head_tenant">Rent Due: <%= number_to_currency(@unit.rent_charge) %></td>
-            <td class="td_head_tenant_right_float">Utilities Due: <%= number_to_currency(@utility_charge) %></td>
+            <td class="invoice-top">Invoice</td>
+            <td class="invoice-top-right">Date Due: <%= @current_due_date.strftime("%B %d, %Y") %></td>
           </tr>
-          <tr>
-            <% unless @unit.security_paid %> 
-              <td class="td_head_tenant">Security Deposit Due: <%= number_to_currency(@unit.security_charge) %></td>
-            <% else %>
-              <td class="td_head_tenant">Security Deposit Due: Paid</td>
-            <% end %>
-          </tr>
-          <% if  @current_due_date.present? %>
-            <tr>
-              <td class="td_head_tenant highlight">Next Rent Payment: <%= @current_due_date.strftime("%B %d, %Y") %></td>
-              <td class="td_head_tenant_right_float highlight"><%= link_to 'Pay Rent', new_stripe_charge_path, class: 'btn btn-success btn-sm' %></td>
-            </tr>
           <% end %>
+          <tr>
+            <td class="invoice-body"><b>Item</b></td>
+            <td class="invoice-body-right"><b>Amount</b></td>
+          </tr>
+          <tr>
+            <td class="invoice-body">Rent</td>
+            <td class="invoice-body-right"><%= number_to_currency(@unit.rent_charge) %></td>
+          </tr>
+          <tr>
+            <td class="invoice-body">Utilities</td>
+            <td class="invoice-body-right"><%= number_to_currency(@utility_charge) %></td>
+          </tr>
+          <tr>
+            <td class="invoice-body">Security Deposit</td>
+            <td class="invoice-body-right"><%= number_to_currency(@security_amount) %></td>
+          </tr>
+          <tr>
+            <td class="invoice-top">Total</td>
+            <td class="invoice-top-right"><%= number_to_currency(@security_amount+@utility_charge+@unit.rent_charge) %></td>
+          </tr>
+            <% if  @current_due_date.present? %>
+             <tr>
+              <td class="left-spot"></td>  
+              <td class="right-spot"><%= link_to 'Pay Rent', new_stripe_charge_path, class: 'btn btn-success btn-sm' %></td>
+            </tr>
+            <% end %>
+
         </table>
       </div>
     </div>
     <div class="col-sm-8 col-sm-offset-2">
+      <h3 class="left_float">Payment History</h3>
       <table class="table">
         <thead>
           <tr>

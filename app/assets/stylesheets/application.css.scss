@@ -26,19 +26,22 @@ html {
 body {
   padding-top: 70px; 
   /*min-height: 2000px;/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-  margin-bottom: 60px; /*Requried for sticky-footer */
-  /*background-color: #333;
-  background-color: #E5DFD9;*/
+  margin-bottom: 80px; /*Requried for sticky-footer */
   background-color: #f1ebe4;
 }
+
+ h1, h2, h3, h4, p {
+ 	font-family: 'Ubuntu', Ariel, sans-serif;
+ 	color: #99806a;
+ }
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 80px;
   background-color: #99806a;
+  margin-top:10px;
 }
 
 .footer-text {
@@ -56,6 +59,20 @@ body {
 
 .jumbotron {
   background: image-url("troy_postcards_birds_eye_view_jumbotron_crop.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.transtextbox {
+  margin: 4px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+.transtextbox h1 {
+  font-weight: bold;
 }
 
 table {
@@ -73,6 +90,10 @@ table {
 .thumbnail {
   background-color: #e7d9c9;
   border-color: #cea762;
+}
+
+.caption a {
+  color:  #99806a;
 }
 
 .navbar-default {
@@ -105,7 +126,7 @@ table {
     background-color: black;
 }
 
-/*this is mnot working*/
+/*this is not working*/
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   border-bottom: 1px solid #cea762;
 }
@@ -121,30 +142,6 @@ table {
 .dropdown-menu li a:hover {
   background-color: #99806a;
 }
-
-/*
- .content {
- 	background-color: #e1d0a4;
- 	min-height: 600px;
- 	padding: 20px;
- }
-
-#header {	
-	background-color: #99806a; 
-	color: #e1d0a4;
-	minimum-height: 100px;
-	font-weight: bold;
-	padding: 5px 20px 20px;
-	font-size: 1.1em;
-	text-align: center;
-	}
-
-*/
- h1, h2, h3, h4 {
- 	font-family: 'Ubuntu', Ariel, sans-serif;
- 	text-align: center;
- 	color: #99806a;
- }
 
  .center {
  	text-align: center;
@@ -175,6 +172,11 @@ table {
 	border: 1px solid #cea762;
 }
 
+.form-group {
+  color: #99806a;
+  font-family: 'Ubuntu', Ariel, sans-serif;
+}
+
 .alert-success {
 	background-color: #cea762;
 	border-color: #cea762;
@@ -182,22 +184,22 @@ table {
 	font-weight: bold;
 }
 
-.btn-success {
+.btn {
+  border: 0 none;
+}
+
+.btn-success, {
 	background-color: #cea762;
 	border-color: #cea762;
 	color: #99806a;
 	font-weight: bold;
 }
 
-.btn-success:hover {
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .dropdown-toggle.btn-success{
 	background-color: #99806a;
 	border-color: #99806a;
 	color: #cea762;
 	font-weight: bold;
-}
-
-.btn-success:active, .btn-success:focus, .btn-success.focus{
-  border-color: #99806a;
 }
 
 #howto {
@@ -212,15 +214,44 @@ table {
 	font-size: 1.0em;
 }
 
-.td_head_tenant {
-	width: 50%;
-	padding: 5px;
+.invoice-top, .invoice-top-right {
+  font-size: 1.1em;
+  padding: 8px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color:  #fdfef0;
+  font-weight: bold;
 }
 
-.td_head_tenant_right_float {
-	width: 50%;
-	padding: 5px;
-	text-align: right;
+.invoice-top-right {
+  text-align: right;
+}
+
+.invoice-body {
+  width: 60%;
+  padding: 5px;
+  background-color:  #fdfef0;
+  border-bottom: 1px dashed black;
+}
+
+.invoice-body-right {
+  width: 40%;
+  text-align: right;
+  padding: 5px;
+  background-color:  #fdfef0;
+  border-bottom: 1px dashed black;
+  border-left: 1px solid black;
+}
+
+.left-spot {
+  padding: 5px;
+  width: 60%;
+}
+
+.right-spot {
+  text-align: right;
+  padding: 5px;
+  width: 40%;
 }
 
 .highlight {

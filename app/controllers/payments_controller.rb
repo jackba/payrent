@@ -17,6 +17,13 @@ class PaymentsController < ApplicationController
     last_unpaid_rent_for_unit = PaidRent.where(paid: false, unit_id: @unit).first
     @current_due_date = last_unpaid_rent_for_unit.present? ? last_unpaid_rent_for_unit.date_due : nil
     
+    #determine if scurity deposit has been paid and assign it a variable for use in the view 
+    unless @unit.security_paid
+      @security_amount = @unit.security_charge
+    else
+      @security_amount = 0
+    end
+        
   end
 
   # GET /payments/1

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-3" id="howto">
-		<h4><u>How To Use This Page</u></h4>
+		<h4 class="center"><u>How To Use This Page</u></h4>
 		<ol>
 			<li>Create all properties</li>
 			<li>Invite tenants to register</li>
@@ -17,16 +17,15 @@
 		</ol>
 	</div>
 	<div class="col-sm-6">
-		<h1>Admin Control Panel</h1>
-		<h2>Manage Properties</h2>
-		<h3>Current Properties</h3>
+		<h1 class="center">Admin Control Panel</h1>
+		<h2 class="center">Manage Properties</h2>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
 					<th>Address</th>
 					<th>ID</th>
-					<th>Edit</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,7 +40,7 @@
 			</tbody>
 		</table>
 		<div class="center">
-			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addProperty">Add A Property
+			<button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#addProperty">Add A Property
 			</button>
 		</div><br />
 		<div class="col-sm-6 col-sm-offset-3">
@@ -54,18 +53,18 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-	<h2>Manage Units</h2>
-	<h3>Current Units</h3>
+	<h2 class="center">Manage Units</h2>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Property</th>
+          <th>Unit Id</th>
 					<th>Description</th>
 					<th>Rent Charge</th>
 					<th>Security Charge</th>
 					<th>Security Paid</th>
 					<th>Tenant</th>
-					<th>Edit</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,6 +72,7 @@
 			<% unit.security_paid ? security_deposit="Yes" : security_deposit="No" %>
 				<tr>
 					<td><%= unit.property.name %></td>
+          <td><%= unit.id %></td>
 					<td><%= unit.description %></td>
 					<td><%= number_to_currency(unit.rent_charge) %></td>
 					<td><%= number_to_currency(unit.security_charge) %></td>
@@ -84,7 +84,7 @@
 			</tbody>
 		</table>
 		<div class="center">
-			<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUnit">Add A Unit
+			<button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#addUnit">Add A Unit
 			</button>
 		</div><br />
 		<div class="col-sm-6 col-sm-offset-3">
@@ -96,8 +96,7 @@
 </div>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h2>Manage Tenants</h2>
-		<h3>Current Tenants</h3>
+		<h2 class="center">Manage Tenants</h2>
 		<table class="table">
 			<thead>
 				<tr>
@@ -122,10 +121,10 @@
 	</div>
 </div>
 
-<h2>Manage Utility Payments</h2>
+<h2 class="center">Manage Utility Payments</h2>
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h3>Utility Charges History</h3>
+		<h3 class="center">Utility Charges History</h3>
 		<table class="table">
 			<thead>
 				<tr>
@@ -134,7 +133,6 @@
 					<th>Utility Charge</th>
 					<th>Utility Date</th>
 					<th>Unit</th>
-          <th></th>
           <th></th>
 				</tr>
 			</thead>
@@ -147,13 +145,12 @@
 						<td><%= utility.utility_charge_date %></td>
             <td><%= utility.unit.description %></td>
             <td><b><%= link_to 'Edit', edit_utility_charge_path(utility) %></b></td>
-            <td><b><%= link_to 'Delete', utility, method: :delete, data: { confirm: 'Are you sure?' } %></b></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 			<div class="center">
-				<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addUtility">Add A Utility Payment
+				<button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#addUtility">Add A Utility Payment
 				</button>
 		</div><br />
 		<div class="col-md-6 col-md-offset-3">
@@ -166,8 +163,8 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h2>Review/Manage Payments</h2>
-		<h3>Payments Made</h3>
+		<h2 class="center">Review/Manage Payments</h2>
+		<h3 class="center">Payments Made</h3>
 		<table class="table">
 			<thead>
 				<tr>
@@ -191,7 +188,7 @@
 			</tbody>
 		</table>
 		<div class="center">
-				<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#addPayment">Add A Tenants non-CC Payment
+				<button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#addPayment">Add A Tenants non-CC Payment
 				</button>
 		</div><br />
 		<div class="col-md-6 col-md-offset-3">
@@ -204,7 +201,7 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h3>Rent Tracking History</h3>
+		<h3 class="center">Rent Tracking History</h3>
 		<table class="table">
 			<thead>
 				<tr>
@@ -227,10 +224,15 @@
 				<% end %>
 			</tbody>
 		</table>
-    <inline class="left_float"><%= link_to 'Show All', paid_rents_path %></inline><br>
+    <inline class="left_float"><%= link_to 'Show All', paid_rents_path %></inline><br><br>
+		<div class="center">
+				<button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#addRents">Create Monthly Rents
+				</button>
+		</div><br />
 		<div class="col-md-6 col-md-offset-3">
-			<h3>Create or fill the Rent Paid table</h3>
-				<%= render "paid_rents/form" %>
+			<div class="collapse" id="addRents">
+        <%= render "paid_rents/form" %>
+			</div>
 		</div>
 	</div>
-</div>
+</div><br>
