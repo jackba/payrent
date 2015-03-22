@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1 class="center">Contact Highbrook Properties</h1>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="formbox_left">
+           <%= simple_form_for(@contact_form, html: { class: 'form-vertical' }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+               <%= f.input :name, required: true %>
+               <%= f.input :email, required: true %>
+               <%= f.input :phone, hint: "Enter as 111-111-1111 or 111 111 1111", required: true %>
+               <%= f.input :building, collection: @properties, label_method: :name, value_method: :name, label: "Select A Property", include_blank: false %>
+               <%= f.input :pets, as: :radio_buttons %>
+               <%= f.input :smoker, as: :radio_buttons %>
+               <%= f.input :student, as: :radio_buttons %>
+               <%= f.input :comments, as: :text %>
+            </div>
+          <div class="form-actions">
+            <%= f.button :submit, 'Send Form', class: "btn btn-success" %>
+          </div>
+         <% end %>
+     </div><br>
+   </div>
+  </div>
+</div>

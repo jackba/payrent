@@ -168,6 +168,15 @@ table {
 	text-align: center;
   background-color: #e7d9c9;
 }
+
+.formbox_left {
+	border: 2px solid #cea762;
+	-webkit-border-radius: 15px; -moz-border-radius: 15px; border-radius:15px;
+	padding: 10px;
+	text-align: left;
+  background-color: #e7d9c9;
+}
+
 .form-control {
 	border: 1px solid #cea762;
 }
@@ -268,3 +277,23 @@ table {
 /*#navbar .navbar-nav li {
   border-bottom: 1px solid red;
 }*/
+
+/* SIMPLE_FORM Styling */
+
+.radio {
+  display: inline;
+  margin-right: 3px;
+}
+
+.radio label {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.simple_form .error {
+  clear: left;
+  margin-left: 120px;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}

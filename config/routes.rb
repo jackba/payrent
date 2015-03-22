@@ -1,5 +1,7 @@
 Payrent::Application.routes.draw do
 
+  get "contact_forms/new"
+  get "contact_forms/create"
   get "/admin" => "admin#index"
 
   resources :paid_rents
@@ -16,6 +18,8 @@ Payrent::Application.routes.draw do
 
   devise_for :users
   resources :users, only: [:update, :index]
+  
+  resources :contact_forms, only: [:new, :create]
 
   get "welcome/index"
   get "welcome/about"
