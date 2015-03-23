@@ -211,11 +211,20 @@ table {
 	font-weight: bold;
 }
 
+.checkbox {
+  display: inline;
+  min-height: 0px;
+}
+
 #howto {
 	background-color: #e4dcac;
 	-webkit-border-radius: 15px 15px 15px 15px; -moz-border-radius: 15px 15px 15px 15px; border-radius: 14px 15px 15px 15px;
 	color: #99806a;
   -webkit-box-shadow: 5px 5px 5px #828282; -moz-box-shadow: 5px 5px 5px #828282; box-shadow: 5px 5px 5px #828282;
+}
+
+#howto ul {
+  margin-left: -15px;
 }
 
 .tenant-format {

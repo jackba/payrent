@@ -1,4 +1,4 @@
-alert('createMap')
+
 var handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'brookviewmap'}}, function(){
   var markers = handler.addMarkers([
