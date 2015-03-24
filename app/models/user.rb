@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
   has_many :utility_charges, through: :payments
   has_many :payments
   
-  private
   
-
     
 end
