@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  #before_action :require_admin, except: [:show, :index]
+  #before_action :require_admin
   
   def index
   	@users=User.all
@@ -43,11 +43,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-  	params.require(:user).permit(:name, :email, :admin, :password )
+    params.require(:user).permit(:name, :email, :password )
   end
-    
-  def send_welcome_email
-    WelcomeMailer.welcome_email(self).deliver
-  end
-  
+      
 end
