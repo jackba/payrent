@@ -16,7 +16,7 @@ Payrent::Application.routes.draw do
 
   resources :stripe_charges, only: [:new, :create]
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users, only: [:update, :index]
   
   resources :contact_forms, only: [:new, :create]
