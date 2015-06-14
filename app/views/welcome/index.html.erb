@@ -1,16 +1,20 @@
 <div class="row text-center">
   <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-      <%=image_tag("37front.jpg", alt: "Front view of 37 Brookview Ave")%>
-      <div class="caption">
+      <%= link_to welcome_brookview_path do %>
+        <%=image_tag("37front2.jpg", alt: "Front view of 37 Brookview Ave")%>
+      <% end %>
+     <div class="caption">
         <h3><%= link_to "37 Brookview Ave", welcome_brookview_path %></h3>
       </div>
     </div>
   </div>
-
+  
   <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-      <%=image_tag("1891front400x300.jpg", alt: "Front view of 1891 Highland Ave")%>
+      <%= link_to welcome_highland_path do %>
+        <%=image_tag("1891front2.jpg", alt: "Front view of 1891 Highland Ave")%>
+      <% end %>
       <div class="caption">
         <h3><%= link_to "1891 Highland Ave",  welcome_highland_path %></h3>
       </div>
@@ -19,7 +23,9 @@
 
   <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-      <%=image_tag("60-13thfront.jpg", alt: "Front view of 60 13th Street")%>
+      <%= link_to welcome_thirteenth_path do %>
+        <%=image_tag("60-13thfront2.jpg", alt: "Front view of 60 13th Street")%>
+      <% end %>
       <div class="caption">
         <h3><%= link_to "60 13th Street", welcome_thirteenth_path %></h3>
       </div>
@@ -28,7 +34,9 @@
 
   <div class="col-md-3 col-sm-6 hero-feature">
     <div class="thumbnail">
-      <%=image_tag("1305front400x300.jpg", alt: "Front view of 1891 Hutton Steet")%>
+      <%= link_to welcome_hutton_path do %>
+        <%=image_tag("1305front2.jpg", alt: "Front view of 1891 Hutton Steet")%>
+      <% end %>
       <div class="caption">
         <h3><%= link_to "1305 Hutton Street", welcome_hutton_path %></h3>
       </div>

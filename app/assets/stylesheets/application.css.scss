@@ -92,6 +92,7 @@ table {
 .thumbnail {
   background-color: #e7d9c9;
   border-color: #cea762;
+  min-height: 300px;
 }
 
 .caption a {
@@ -117,6 +118,11 @@ table {
 
 .navbar-default .navbar-brand {
   color: #e4dcac;
+}
+
+.navbar-default .navbar-brand:hover {
+  text-decoration: underline;
+  color: black;
 }
 
 .navbar-default .navbar-toggle:hover,
